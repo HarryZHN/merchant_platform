@@ -1,0 +1,57 @@
+<!-- 购物车页面 -->
+<view class="container">
+  <!-- 商家信息栏 -->
+  <view class="merchant-header" wx:if="{{cart.length > 0}}">
+    <image class="merchant-logo" src="{{currentMerchant.logo || '/images/default/shop.png'}}" mode="aspectFill"></image>
+    <text class="merchant-name">{{currentMerchant.name || '商家'}}</text>
+  </view>
+
+  <!-- 购物车商品列表 -->
+  <view class="cart-list" wx:if="{{cart.length > 0}}">
+    <view class="cart-item" wx:for="{{cart}}" wx:key="_id">
+      <view class="item-checkbox">
+        <icon type="success_circle" size="36" color="#ff6b81" wx:if="{{item.checked}}"></icon>
+        <icon type="circle" size="36" color="#ccc" wx:else></icon>
+      </view>
+      <image class="item-image" src="{{item.images[0] || '/images/default/product.png'}}" mode="aspectFill"></image>
+      <view class="item-info">
+        <text class="item-name">{{item.name}}</text>
+        <text class="item-spec" wx:if="{{item.spec}}">{{item.spec}}</text>
+        <view class="item-bottom">
+          <text class="item-price">¥{{item.price}}</text>
+          <view class="item-quantity">
+            <view class="quantity-btn minus" bindtap="decreaseQuantity" data-id="{{item._id}}">-</view>
+            <input class="quantity-input" type="number" value="{{item.quantity}}" bindinput="onQuantityChange" data-id="{{item._id}}" />
+            <view class="quantity-btn plus" bindtap="increaseQuantity" data-id="{{item._id}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空购物车状态 -->
+  <view class="empty-cart" wx:else>
+    <image class="empty-icon" src="/images/empty/cart.png"></image>
+    <text>购物车是空的</text>
+    <button class="go-shopping" bindtap="goShopping">去购物</button>
+  </view>
+
+  <!-- 底部结算栏 -->
+  <view class="footer-bar" wx:if="{{cart.length > 0}}">
+    <view class="select-all">
+      <icon type="success_circle" size="36" color="#ff6b81" wx:if="{{selectAll}}"></icon>
+      <icon type="circle" size="36" color="#ccc" wx:else></icon>
+      <text>全选</text>
+    </view>
+    <view class="total-info">
+      <text class="total-text">合计：</text>
+      <text class="total-price">¥{{totalPrice.toFixed(2)}}</text>
+    </view>
+    <button class="settle-btn" bindtap="goToSettle">结算({{selectedCount}})</button>
+  </view>
+
+  <!-- 操作提示 -->
+  <view class="tip" wx:if="{{cart.length > 0}}">
+    <text>向左滑动删除商品</text>
+  </view>
+</view>

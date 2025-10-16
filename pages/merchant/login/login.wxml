@@ -1,0 +1,37 @@
+<!-- 商家登录页面 -->
+<view class="container">
+  <view class="logo-container">
+    <image class="logo" src="/images/default/shop.png"></image>
+    <text class="title">商家管理系统</text>
+  </view>
+
+  <view class="form-container">
+    <view class="input-group">
+      <image class="input-icon" src="/images/menu/user.png"></image>
+      <input type="text" placeholder="请输入商家账号" bindinput="onUsernameInput" value="{{username}}" />
+    </view>
+    
+    <view class="input-group">
+      <image class="input-icon" src="/images/menu/lock.png"></image>
+      <input type="password" placeholder="请输入密码" bindinput="onPasswordInput" value="{{password}}" password="true" />
+    </view>
+    
+    <view class="options">
+      <checkbox checked="{{rememberPassword}}" bindtap="toggleRememberPassword">记住密码</checkbox>
+      <text class="forgot-password" bindtap="forgotPassword">忘记密码？</text>
+    </view>
+    
+    <button class="login-btn" bindtap="login" disabled="{{loading}}">
+      {{loading ? '登录中...' : '登录'}}
+    </button>
+    
+    <view class="register-section">
+      <text>还没有账号？</text>
+      <text class="register-link" bindtap="goToRegister">立即入驻</text>
+    </view>
+  </view>
+
+  <view class="tips">
+    <text>* 请使用商户账号登录</text>
+  </view>
+</view>

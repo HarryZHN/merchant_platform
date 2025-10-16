@@ -1,0 +1,224 @@
+/* 用户中心页面样式 */
+
+/* 用户信息区域 */
+.user-info-section {
+  background-color: #ff6b81;
+  padding: 40rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 20rpx 20rpx;
+  color: #fff;
+}
+
+.avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.5);
+  margin-right: 30rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.user-id {
+  font-size: 26rpx;
+  opacity: 0.8;
+}
+
+.member-badge {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 16rpx 24rpx;
+  border-radius: 40rpx;
+  text-align: center;
+}
+
+.member-level {
+  font-size: 28rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.member-points {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 订单区域 */
+.order-section {
+  background-color: #fff;
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx 20rpx;
+}
+
+.section-header .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-header .more {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.order-tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20rpx;
+}
+
+.order-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.tab-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.order-tab text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 功能菜单 */
+.menu-section {
+  margin-top: 20rpx;
+}
+
+.menu-group {
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 30rpx;
+  position: relative;
+}
+
+.menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30rpx;
+  right: 30rpx;
+  height: 1rpx;
+  background-color: #f0f0f0;
+}
+
+.menu-item:last-child::after {
+  display: none;
+}
+
+.menu-icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 24rpx;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.menu-arrow {
+  display: flex;
+  align-items: center;
+  color: #999;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  left: -20rpx;
+  top: -10rpx;
+  background-color: #ff4d4f;
+  color: #fff;
+  font-size: 20rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 12rpx;
+  min-width: 30rpx;
+  text-align: center;
+}
+
+/* 商家管理入口 */
+.merchant-entry,
+.admin-entry {
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 响应式调整 */
+@media (min-width: 768rpx) {
+  .user-info-section {
+    padding: 60rpx;
+  }
+  
+  .avatar {
+    width: 200rpx;
+    height: 200rpx;
+  }
+  
+  .user-name {
+    font-size: 40rpx;
+  }
+  
+  .member-level {
+    font-size: 32rpx;
+  }
+}
+
+/* 动画效果 */
+.user-info-section,
+.order-section,
+.menu-group,
+.merchant-entry,
+.admin-entry {
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.menu-item:active,
+.order-tab:active,
+.merchant-entry:active,
+.admin-entry:active {
+  background-color: #f8f8f8;
+}
+
+/* 底部间距 */
+.container {
+  padding-bottom: 40rpx;
+}

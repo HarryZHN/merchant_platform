@@ -1,0 +1,69 @@
+<!-- 商家列表页面 -->
+<view class="container">
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-item {{sortType === 'default' ? 'active' : ''}}" bindtap="sortByDefault">
+      <text>默认</text>
+    </view>
+    <view class="filter-item {{sortType === 'distance' ? 'active' : ''}}" bindtap="sortByDistance">
+      <text>距离</text>
+      <icon wx:if="{{sortType === 'distance' && sortOrder === 'asc'}}" class="sort-icon" type="up"></icon>
+      <icon wx:elif="{{sortType === 'distance'}}" class="sort-icon" type="down"></icon>
+    </view>
+    <view class="filter-item {{sortType === 'sales' ? 'active' : ''}}" bindtap="sortBySales">
+      <text>销量</text>
+      <icon wx:if="{{sortType === 'sales' && sortOrder === 'asc'}}" class="sort-icon" type="up"></icon>
+      <icon wx:elif="{{sortType === 'sales'}}" class="sort-icon" type="down"></icon>
+    </view>
+    <view class="filter-item {{sortType === 'score' ? 'active' : ''}}" bindtap="sortByScore">
+      <text>评分</text>
+      <icon wx:if="{{sortType === 'score' && sortOrder === 'asc'}}" class="sort-icon" type="up"></icon>
+      <icon wx:elif="{{sortType === 'score'}}" class="sort-icon" type="down"></icon>
+    </view>
+  </view>
+
+  <!-- 商家列表 -->
+  <view class="merchant-list">
+    <block wx:if="{{merchants.length > 0}}">
+      <view class="merchant-card" wx:for="{{merchants}}" wx:key="_id" bindtap="goToMerchantDetail" data-id="{{item._id}}">
+        <image class="merchant-cover" src="{{item.coverImage}}" mode="aspectFill"></image>
+        <view class="merchant-header">
+          <image class="merchant-logo" src="{{item.logo}}" mode="aspectFill"></image>
+          <view class="merchant-info">
+            <text class="merchant-name">{{item.name}}</text>
+            <view class="merchant-meta">
+              <text class="score">⭐ {{item.score}}</text>
+              <text class="sales">月售{{item.monthlySales}}</text>
+              <text class="distance">{{item.distance}}m</text>
+            </view>
+          </view>
+          <view class="delivery-info">
+            <text class="delivery-fee">配送费¥{{item.deliveryFee}}</text>
+            <text class="min-order">起送¥{{item.minOrderAmount}}</text>
+          </view>
+        </view>
+        <view class="merchant-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="merchant-products">
+          <view class="product-item" wx:for="{{item.recommendProducts}}" wx:key="index" wx:for-item="product">
+            <image class="product-image" src="{{product.image}}" mode="aspectFill"></image>
+            <text class="product-name">{{product.name}}</text>
+            <text class="product-price">¥{{product.price}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty" wx:else>
+      <image class="empty-icon" src="/images/empty/shop.png"></image>
+      <text>暂无商家</text>
+    </view>
+  </view>
+
+  <!-- 加载提示 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

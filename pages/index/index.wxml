@@ -1,0 +1,91 @@
+<!-- 首页 -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <icon class="icon-search" type="search" size="28"></icon>
+      <input type="text" placeholder="搜索水果或商家" bindinput="onSearchInput" bindconfirm="onSearch" />
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class="banner">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+      <block wx:for="{{banners}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.image}}" mode="aspectFill" bindtap="onBannerTap" data-id="{{item.id}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 功能导航 -->
+  <view class="nav-bar">
+    <view class="nav-item" bindtap="goToMerchantList">
+      <image src="/images/nav/shop.png"></image>
+      <text>商家列表</text>
+    </view>
+    <view class="nav-item" bindtap="goToNearby">
+      <image src="/images/nav/nearby.png"></image>
+      <text>附近商家</text>
+    </view>
+    <view class="nav-item" bindtap="goToMemberCenter">
+      <image src="/images/nav/member.png"></image>
+      <text>会员中心</text>
+    </view>
+    <view class="nav-item" bindtap="goToCart">
+      <image src="/images/nav/cart.png"></image>
+      <text>购物车</text>
+    </view>
+  </view>
+
+  <!-- 推荐商家 -->
+  <view class="section">
+    <view class="section-title">
+      <text>推荐商家</text>
+      <text class="more" bindtap="goToMerchantList">查看更多 ></text>
+    </view>
+    <view class="merchant-list">
+      <block wx:for="{{recommendedMerchants}}" wx:key="_id">
+        <view class="merchant-card" bindtap="goToMerchantDetail" data-id="{{item._id}}">
+          <image class="merchant-logo" src="{{item.logo}}" mode="aspectFill"></image>
+          <view class="merchant-info">
+            <text class="merchant-name">{{item.name}}</text>
+            <view class="merchant-meta">
+              <text class="score">⭐ {{item.score}}</text>
+              <text class="distance">{{item.distance}}m</text>
+            </view>
+            <view class="merchant-tags">
+              <text class="tag" wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 热门商品 -->
+  <view class="section">
+    <view class="section-title">
+      <text>热门水果</text>
+      <text class="more" bindtap="goToAllProducts">查看更多 ></text>
+    </view>
+    <view class="product-grid">
+      <block wx:for="{{hotProducts}}" wx:key="_id">
+        <view class="product-card" bindtap="goToProductDetail" data-id="{{item._id}}" data-merchant-id="{{item.merchantId}}">
+          <image class="product-image" src="{{item.images[0]}}" mode="aspectFill"></image>
+          <view class="product-info">
+            <text class="product-name">{{item.name}}</text>
+            <text class="product-price">¥{{item.price}}</text>
+            <text class="product-sales">已售{{item.sales}}件</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 底部加载提示 -->
+  <view class="loading-more" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

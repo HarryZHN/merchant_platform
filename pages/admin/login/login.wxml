@@ -1,0 +1,30 @@
+<!-- 管理员登录页面 -->
+<view class="container">
+  <view class="login-box">
+    <view class="logo-container">
+      <image class="logo" src="/images/default/admin.png"></image>
+      <text class="title">多租户管理后台</text>
+      <text class="subtitle">开发者管理系统</text>
+    </view>
+
+    <view class="form">
+      <view class="form-item">
+        <text class="label">用户名</text>
+        <input type="text" placeholder="请输入管理员账号" bindinput="onUsernameInput" value="{{username}}" />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">密码</text>
+        <input type="password" placeholder="请输入密码" bindinput="onPasswordInput" value="{{password}}" password="true" />
+      </view>
+      
+      <button class="login-btn" bindtap="login" disabled="{{loading}}">
+        {{loading ? '登录中...' : '登录'}}
+      </button>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text class="copyright">© 2024 多租户水果店管理系统</text>
+  </view>
+</view>

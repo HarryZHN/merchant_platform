@@ -1,0 +1,207 @@
+/* 商家列表页面样式 */
+
+/* 筛选栏样式 */
+.filter-bar {
+  display: flex;
+  background-color: #fff;
+  padding: 20rpx 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.filter-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.filter-item.active {
+  color: #ff6b81;
+}
+
+.sort-icon {
+  margin-left: 8rpx;
+  font-size: 20rpx;
+}
+
+/* 商家列表样式 */
+.merchant-list {
+  padding: 20rpx 0;
+}
+
+.merchant-card {
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.merchant-cover {
+  width: 100%;
+  height: 200rpx;
+}
+
+.merchant-header {
+  display: flex;
+  padding: 20rpx;
+  position: relative;
+}
+
+.merchant-logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.merchant-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.merchant-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.merchant-meta {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.merchant-meta .score {
+  font-size: 26rpx;
+  color: #ff9500;
+}
+
+.merchant-meta .sales,
+.merchant-meta .distance {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.delivery-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8rpx;
+}
+
+.delivery-fee,
+.min-order {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 商家标签样式 */
+.merchant-tags {
+  padding: 0 20rpx 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.merchant-tags .tag {
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  background-color: #f5f5f5;
+  color: #666;
+  border-radius: 12rpx;
+  margin-right: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+/* 推荐商品样式 */
+.merchant-products {
+  display: flex;
+  padding: 20rpx;
+  background-color: #fafafa;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.product-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.product-item image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+  margin-bottom: 10rpx;
+}
+
+.product-item .product-name {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.product-item .product-price {
+  font-size: 28rpx;
+  color: #ff6b81;
+  font-weight: bold;
+}
+
+/* 空状态样式 */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 200rpx 0;
+}
+
+.empty-icon {
+  width: 160rpx;
+  height: 160rpx;
+  opacity: 0.5;
+  margin-bottom: 40rpx;
+}
+
+.empty text {
+  font-size: 30rpx;
+  color: #999;
+}
+
+/* 加载样式 */
+.loading {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 动画效果 */
+.merchant-card {
+  transition: transform 0.2s;
+}
+
+.merchant-card:active {
+  transform: scale(0.98);
+}
+
+/* 响应式调整 */
+@media (min-width: 768rpx) {
+  .merchant-products {
+    justify-content: space-around;
+  }
+}

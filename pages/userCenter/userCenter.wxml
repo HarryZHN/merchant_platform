@@ -1,0 +1,104 @@
+<!-- 用户中心页面 -->
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-section" bindtap="getUserInfo">
+    <image class="avatar" src="{{userInfo.avatarUrl || '/images/default/avatar.png'}}" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="user-name">{{userInfo.nickName || '点击登录'}}</text>
+      <text class="user-id">ID: {{userId || '--'}}</text>
+    </view>
+    <view class="member-badge" bindtap="goToMemberCenter">
+      <text class="member-level">{{memberLevel || '普通会员'}}</text>
+      <text class="member-points">积分: {{points || 0}}</text>
+    </view>
+  </view>
+
+  <!-- 订单状态快捷入口 -->
+  <view class="order-section">
+    <view class="section-header">
+      <text class="title">我的订单</text>
+      <text class="more" bindtap="goToOrderList">全部订单 ></text>
+    </view>
+    <view class="order-tabs">
+      <view class="order-tab" bindtap="goToOrderList" data-status="0">
+        <image class="tab-icon" src="/images/order/pending.png"></image>
+        <text>待付款</text>
+      </view>
+      <view class="order-tab" bindtap="goToOrderList" data-status="1">
+        <image class="tab-icon" src="/images/order/paid.png"></image>
+        <text>待发货</text>
+      </view>
+      <view class="order-tab" bindtap="goToOrderList" data-status="2">
+        <image class="tab-icon" src="/images/order/shipped.png"></image>
+        <text>待收货</text>
+      </view>
+      <view class="order-tab" bindtap="goToOrderList" data-status="3">
+        <image class="tab-icon" src="/images/order/completed.png"></image>
+        <text>已完成</text>
+      </view>
+      <view class="order-tab" bindtap="goToOrderList" data-status="4">
+        <image class="tab-icon" src="/images/order/aftersale.png"></image>
+        <text>售后</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToCoupons">
+        <image class="menu-icon" src="/images/menu/coupon.png"></image>
+        <text class="menu-text">优惠券</text>
+        <view class="menu-arrow">
+          <text class="badge" wx:if="{{couponCount > 0}}">{{couponCount}}</text>
+          <icon type="right" size="24"></icon>
+        </view>
+      </view>
+      <view class="menu-item" bindtap="goToAddress">
+        <image class="menu-icon" src="/images/menu/address.png"></image>
+        <text class="menu-text">收货地址</text>
+        <icon class="menu-arrow" type="right" size="24"></icon>
+      </view>
+      <view class="menu-item" bindtap="goToFavorites">
+        <image class="menu-icon" src="/images/menu/favorite.png"></image>
+        <text class="menu-text">我的收藏</text>
+        <icon class="menu-arrow" type="right" size="24"></icon>
+      </view>
+      <view class="menu-item" bindtap="goToEvaluations">
+        <image class="menu-icon" src="/images/menu/evaluation.png"></image>
+        <text class="menu-text">我的评价</text>
+        <icon class="menu-arrow" type="right" size="24"></icon>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToCustomerService">
+        <image class="menu-icon" src="/images/menu/service.png"></image>
+        <text class="menu-text">客服中心</text>
+        <icon class="menu-arrow" type="right" size="24"></icon>
+      </view>
+      <view class="menu-item" bindtap="goToSettings">
+        <image class="menu-icon" src="/images/menu/settings.png"></image>
+        <text class="menu-text">设置</text>
+        <icon class="menu-arrow" type="right" size="24"></icon>
+      </view>
+      <view class="menu-item" bindtap="goToAbout">
+        <image class="menu-icon" src="/images/menu/about.png"></image>
+        <text class="menu-text">关于我们</text>
+        <icon class="menu-arrow" type="right" size="24"></icon>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商家管理入口 -->
+  <view class="merchant-entry" bindtap="goToMerchantLogin">
+    <text>商家管理入口</text>
+    <icon type="right" size="24"></icon>
+  </view>
+
+  <!-- 管理员入口 -->
+  <view class="admin-entry" bindtap="goToAdminLogin">
+    <text>管理员入口</text>
+    <icon type="right" size="24"></icon>
+  </view>
+</view>
